@@ -23,7 +23,7 @@ function App() {
     <div className="App">
         <Routes>
           <Route path="/add_trip" element={<AddTrip/>}/>
-          <Route path="/display_trip/:id" element={<DisplayTrip/>}/>
+          <Route path="/display_trip/:id" element={<DisplayTrip upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/" element={<Homepage upcomingTrips={upcomingTrips}/>}/>
         </Routes>
     </div>
