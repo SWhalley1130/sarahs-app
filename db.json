@@ -1,0 +1,91 @@
+{
+    "trips":
+    [
+        {
+            "id":1, 
+            "name":"Beach Bums",
+            "guests":["Mom", "Dad"],
+            "destinations":["Miami, Florida","At Sea","Puerto Plata, Dominican Republic","At Sea","Miami, Florida"],
+            "Flights": 
+            [
+                {
+                    "date":"03-24-2023",
+                    "info":"PHL to MIA"
+                },
+                {
+                    "date":"04-01-2023",
+                    "info":"MIA to PHL"
+                }
+            ],
+            "hotels":
+            [
+                {
+                    "date":"03-24-2023",
+                    "info":"Miami Inn"
+                }
+            ],
+            "activities":
+            [
+                {
+                    "day":1, 
+                    "info": "Go to the bar"
+                },
+                {
+                    "day":3,
+                    "info": "Swim in the pool"
+                },
+                {
+                    "day":5,
+                    "info":"Nature tour"
+                }
+            ]
+        },
+        {
+            "id":2, 
+            "name":"Glaciers Galore ",
+            "guests":["Mom", "Dad", "Alex","Mallory"],
+            "destinations":["Vancouver, Canada","Ketchikan, Alaska","Sitka, Alaska","Endicott Arm & Dawes Glacier, Alaska","Juneau, Alaska","At Sea","Victoria, British Columbia","Seattle, Washington "],
+            "Flights": 
+            [
+                {
+                    "date":"07-15-2023",
+                    "info":"PHL to YVR"
+                },
+                {
+                    "date":"07-23-2023",
+                    "info":"SEA to PHL"
+                }
+            ],
+            "hotels":
+            [
+                {
+                    "date":"07-15-2023",
+                    "info":"Vancouver Inn"
+                },
+                {
+                    "date":"07-22-2023",
+                    "info":"Seattle Inn"
+                }
+            ],
+            "activities":
+            [
+                {
+                    "day":1, 
+                    "info": "Power Nap"
+                },
+                {
+                    "day":3,
+                    "info": "Look at a glacier"
+                },
+                {
+                    "day":5,
+                    "info":"Watch Titanic and panic"
+                },
+                {
+                    "day":7,
+                    "info":"Eat some fancy food"
+                }
+            ]
+        }
+    ]
+}
