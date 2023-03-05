@@ -1,23 +1,19 @@
-import logo from "../misc-react-starter-code/logo.svg"
 import '../misc-react-starter-code/App.css';
+import TopBar from "./TopBar";
+import { Route, Routes } from "react-router-dom";
+import AddTrip from "./AddTrip";
+import Homepage from "./Homepage";
+import DisplayTrip from "./DisplayTrip";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <TopBar />
+        <Routes>
+          <Route path="/add_trip" element={<AddTrip/>}/>
+          <Route path="/display_trip" element={<DisplayTrip/>}/>
+          <Route exact path="/" element={<Homepage/>}/>
+        </Routes>
     </div>
   );
 }
