@@ -1,4 +1,4 @@
-import logo from '../logo.svg';
+import logo from "../misc-react-starter-code/logo.svg"
 import '../misc-react-starter-code/App.css';
 
 function App() {
