@@ -4,11 +4,14 @@ import { NavLink } from "react-router-dom";
 import ship from "../images/ship.png";
 import Nav from 'react-bootstrap/Nav';
 
-function TopBar()
+function TopBar(props)
 {
     return (
        <Nav className="topbar">
-            <NavLink to="/"><img className="ship-logo" src={ship}/></NavLink>
+            <Container>
+                <NavLink to="/"><img className="ship-logo" src={ship}/></NavLink>
+                {props.children}
+            </Container>
        </Nav>
     )
 }

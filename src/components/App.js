@@ -5,10 +5,8 @@ import AddTrip from "./AddTrip";
 import Homepage from "./Homepage";
 import DisplayTrip from "./DisplayTrip";
 import { useEffect, useState } from 'react';
-import TopBar from './TopBar';
 
 function App() {
-
   const [upcomingTrips, setUpcomingTrips]=useState([])
 
   useEffect(()=>
@@ -16,14 +14,22 @@ function App() {
     fetch(`http://localhost:3000/trips`)
     .then(res=>res.json())
     .then(data=>setUpcomingTrips(data))
-  },[])
+  },[]);
+
+  function handleUpdatedTrip(updatedTrip)
+  {
+    console.log(updatedTrip.id-1);
+    let newArray=JSON.parse(JSON.stringify(upcomingTrips));
+    newArray.splice((updatedTrip.id-1),1, updatedTrip);
+    setUpcomingTrips(newArray);
+  }
 
 
   return (
     <div className="App">
         <Routes>
           <Route path="/add_trip" element={<AddTrip/>}/>
-          <Route path="/display_trip/:id" element={<DisplayTrip upcomingTrips={upcomingTrips}/>}/>
+          <Route path="/display_trip/:id" element={<DisplayTrip handleUpdatedTrip={handleUpdatedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/" element={<Homepage upcomingTrips={upcomingTrips}/>}/>
         </Routes>
     </div>
