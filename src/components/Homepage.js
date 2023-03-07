@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import TopBar from "./TopBar";
 import Row from 'react-bootstrap/Row';
 
-function Homepage({upcomingTrips})
+function Homepage({upcomingTrips, handleDeletedTrip})
 {
     const nav=useNavigate();
 
@@ -14,6 +14,22 @@ function Homepage({upcomingTrips})
     {
         nav(`/display_trip/${trip.id}`);
     }
+
+    function handleDelete(e)
+    {
+        e.stopPropagation();
+        fetch(`http://localhost:3000/trips/${parseInt(e.target.name)}`,
+        {
+            method: 'DELETE',
+            headers:
+            {
+                "Content-Type":'application/json',
+                "Accepts":"application/json"
+            }
+        })
+        .then(res=>res.json())
+        .then(data=> handleDeletedTrip(e.target.name))
+    } 
 
     return (
         <>
@@ -30,6 +46,7 @@ function Homepage({upcomingTrips})
                             <Card.Title>{trip.name}</Card.Title>
                             <Card.Text>{trip.description}</Card.Text>
                         </Card.Body>
+                        <Button name={trip.id} onClick={handleDelete} size='sm' variant="danger">Delete</Button>
                     </Card>
                     )}
                 </Row>

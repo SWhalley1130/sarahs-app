@@ -26,13 +26,18 @@ function App() {
     setUpcomingTrips(newArray);
   }
 
+  function handleDeletedTrip(id)
+  {
+    setUpcomingTrips(upcomingTrips.filter(trip=>trip.id!==parseInt(id)));
+  }
+
 
   return (
     <div className="App">
         <Routes> 
           <Route path="/add_trip" element={<AddTrip upcomingTrips={upcomingTrips} setUpcomingTrips={setUpcomingTrips}/>}/>
           <Route path="/display_trip/:id" element={<DisplayTrip handleUpdatedTrip={handleUpdatedTrip} upcomingTrips={upcomingTrips}/>}/>
-          <Route exact path="/" element={<Homepage upcomingTrips={upcomingTrips}/>}/>
+          <Route exact path="/" element={<Homepage handleDeletedTrip={handleDeletedTrip} upcomingTrips={upcomingTrips}/>}/>
         </Routes>
     </div>
   );
