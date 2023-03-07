@@ -18,17 +18,20 @@ function Homepage({upcomingTrips, handleDeletedTrip})
     function handleDelete(e)
     {
         e.stopPropagation();
-        fetch(`http://localhost:3000/trips/${parseInt(e.target.name)}`,
+        if(window.confirm("Are you sure you want to delete this trip?"))
         {
-            method: 'DELETE',
-            headers:
+            fetch(`http://localhost:3000/trips/${parseInt(e.target.name)}`,
             {
-                "Content-Type":'application/json',
-                "Accepts":"application/json"
-            }
-        })
-        .then(res=>res.json())
-        .then(data=> handleDeletedTrip(e.target.name))
+                method: 'DELETE',
+                headers:
+                {
+                    "Content-Type":'application/json',
+                    "Accepts":"application/json"
+                }
+            })
+            .then(res=>res.json())
+            .then(data=> handleDeletedTrip(e.target.name))
+        }
     } 
 
     return (
