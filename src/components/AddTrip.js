@@ -13,10 +13,19 @@ function AddTrip()
     const nav=useNavigate();
     const [guests,setGuests]=useState([]);
     const [destinations,setDestinations]=useState([]);
+    const [flights, setFlights]=useState([]);
+    const [hotels, setHotels]=useState([]);
+    const [activities, setActivities]=useState([]);
     const [formData, setFormData]=useState(
     {
         guest:'',
-        destInfo:''
+        destInfo:'',
+        flDate:'',
+        flInfo:'',
+        hoDate:'',
+        hoInfo:'',
+        actDay:'',
+        actInfo:''
     });
     
     function handleChange(e)
@@ -36,6 +45,27 @@ function AddTrip()
         destinations.push({day:destinations.length+1, info:formData.destInfo});
         setDestinations(destinations);
         setFormData({...formData, destInfo:''});
+    }
+
+    function handleFlClick()
+    {
+        flights.push({date: formData.flDate, info: formData.flInfo});
+        setFlights(flights);
+        setFormData({...formData, flDate:'', flInfo:''});
+    }
+
+    function handleHoClick()
+    {
+        hotels.push({date: formData.hoDate, info: formData.hoInfo});
+        setHotels(hotels);
+        setFormData({...formData, hoDate:'', hoInfo:''});
+    }
+
+    function handleActClick()
+    {
+        activities.push({day: formData.actDay, info: formData.actInfo});
+        setActivities(activities);
+        setFormData({...formData, actDay:'', actInfo:''});
     }
 
     return (
@@ -77,6 +107,37 @@ function AddTrip()
                         <Button onClick={handleDestClick} variant="info">Add</Button> 
                         <ul>
                             {destinations.length>0 ? destinations.map(p=><li style={{display: 'inline-block', margin:'5px'}} key={uuid()}>• Day {p.day}: {p.info}</li>) : null}
+                        </ul>
+                    </div>
+
+                    <Form.Label>Add Flights</Form.Label>
+                    <Form.Control value={formData.flDate} onChange={e=>handleChange(e)} name="flDate" type="date" />
+                    <Form.Control value={formData.flInfo} onChange={e=>handleChange(e)} name="flInfo" type="text" placeholder="ex: DEN to PHL" />
+                    <div>
+                        <Button onClick={handleFlClick} variant="info">Add</Button> 
+                        <ul>
+                            {flights.length>0 ? flights.map(fl=><li style={{display: 'inline-block', margin:'5px'}} key={uuid()}>• Date: {fl.date}, {fl.info}</li>) : null}
+                        </ul>
+                    </div>
+
+                    
+                    <Form.Label>Add Hotels</Form.Label>
+                    <Form.Control value={formData.hoDate} onChange={e=>handleChange(e)} name="hoDate" type="date" />
+                    <Form.Control value={formData.hoInfo} onChange={e=>handleChange(e)} name="hoInfo" type="text" placeholder="ex: Holiday Inn" />
+                    <div>
+                        <Button onClick={handleHoClick} variant="info">Add</Button> 
+                        <ul>
+                            {hotels.length>0 ? hotels.map(ho=><li style={{display: 'inline-block', margin:'5px'}} key={uuid()}>• Date: {ho.date}, {ho.info}</li>) : null}
+                        </ul>
+                    </div>
+
+                    <Form.Label>Add Activities</Form.Label>
+                    <Form.Control value={formData.actDay} onChange={handleChange} type="number" placeholder="Day" name='actDay'/>
+                    <Form.Control value={formData.actInfo} onChange={handleChange} type="text" placeholder="Name of Activity" name='actInfo' />
+                    <div>
+                        <Button onClick={handleActClick} variant="info">Add</Button> 
+                        <ul>
+                            {activities.length>0 ? activities.map(act=><li style={{display: 'inline-block', margin:'5px'}} key={uuid()}>• Day: {act.day}, {act.info}</li>) : null}
                         </ul>
                     </div>
 
