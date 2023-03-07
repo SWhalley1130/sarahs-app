@@ -9,7 +9,9 @@ import FlightForm from './Forms/FlightForm';
 import HotelForm from './Forms/HotelForm';
 import ActivityForm from "./Forms/ActivityForm";
 import {v4 as uuid} from 'uuid';
-import { Card } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Table from 'react-bootstrap/Table'
+import { act } from "react-dom/test-utils";
 
 function DisplayTrip({upcomingTrips, handleUpdatedTrip})
 {
@@ -42,11 +44,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
         if (addButton==='flight') return <FlightForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         if (addButton==='hotel') return <HotelForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         if (addButton==='activity') return <ActivityForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
-        
-        else
-        {
-            return null;
-        }
+        else {return null}
     }
 
     return (
@@ -85,6 +83,12 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                         variant="info" >
                             Add Activity
                     </Button>
+                    <Button 
+                        onClick={(e)=>console.log(e.target.name)}
+                        name="edit-mode"
+                        variant="warning">
+                            Edit Mode
+                    </Button>
                 </TopBar>
                 <Container>
                     <div style={{display:'flex',marginTop:'30px'}}>
@@ -99,25 +103,81 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                             <li key={uuid()}>{person}</li>)}
                     </ul>
                     <h4>Destinations:</h4>
-                    <ol>
-                        {currentTrip.destinations.map(place=>
-                            <li key={uuid()}>{place}</li>)}
-                    </ol>
-                    <h4>Flights:</h4>
-                    <ul>
-                        {currentTrip.flights.map(fl=>
-                            <li key={uuid()}>Date: {fl.date} - Info: {fl.info}</li>)}
-                    </ul>
-                    <h4>Hotels:</h4>
-                    <ul>
-                        {currentTrip.hotels.map(hotel=>
-                            <li key={uuid()}>Date: {hotel.date} - Info: {hotel.info}</li>)}
-                    </ul>
-                    <h4>Activities:</h4>
-                    <ul>
-                        {currentTrip.activities.map(thing=>
-                            <li key={uuid()}>Day: {thing.day} - Info: {thing.info}</li>)}
-                    </ul>
+                    <Table striped hover>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Stop</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentTrip.destinations.map((destination,index)=>
+                                <tr key={uuid()}>
+                                    <td>{index+1}</td>
+                                    <td>{destination}</td>
+                                </tr>)}
+                        </tbody>
+                    </Table>
+                    {currentTrip.activities.length>0 ?
+                        <>
+                            <h4>Activities:</h4>
+                            <Table striped hover>
+                                <thead>
+                                    <tr>
+                                        <th>Day</th>
+                                        <th>Activity</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {currentTrip.activities.map((activity)=>
+                                        <tr key={uuid()}>
+                                            <td>{activity.day}</td>
+                                            <td>{activity.info}</td>
+                                        </tr>)}
+                                </tbody>
+                            </Table>
+                        </>
+                        : null}
+                    {currentTrip.flights.length>0 ? 
+                        <>
+                            <h4>Flights:</h4>
+                            <Table striped hover>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Flight Information</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {currentTrip.flights.map(flight=>
+                                        <tr key={uuid()}>
+                                            <td>{flight.date}</td>
+                                            <td>{flight.info}</td>
+                                        </tr>)}
+                                </tbody>
+                            </Table>
+                        </>
+                        : null}
+                    {currentTrip.hotels.length>0 ?
+                        <>
+                            <h4>Hotels:</h4>
+                            <Table striped hover>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Hotel</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {currentTrip.hotels.map(hotel=>
+                                        <tr key={uuid()}>
+                                            <td>{hotel.date}</td>
+                                            <td>{hotel.info}</td>
+                                        </tr>)}
+                                </tbody>
+                            </Table>
+                        </> 
+                        : null}
                 </Container>
             </>
             :
