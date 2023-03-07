@@ -28,7 +28,7 @@ function HotelForm({currentTrip, setAddButton, handleUpdatedTrip})
         else 
         {
             trip.hotels.push(formData);
-            fetch(`http://localhost:3000/trips/${param.id}`,
+            fetch(`https://my-server-npkp.onrender.com/trips/${param.id}`,
             {
                 method: 'PATCH',
                 headers:

@@ -85,7 +85,7 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
             hotels:hotels, 
             activities: activities
         };
-        fetch(`http://localhost:3000/trips`,
+        fetch(`https://my-server-npkp.onrender.com/trips`,
         {
             method: 'POST',
             headers:
@@ -153,7 +153,7 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
                     <div>
                         <Button onClick={handleDestClick} variant="info">Add</Button> 
                         <ul>
-                            {destinations.length>0 ? destinations.map(p=><li style={{display: 'inline-block', margin:'5px'}} key={uuid()}>• Day {p.day}: {p.info}</li>) : null}
+                            {destinations.length>0 ? destinations.map((p,index)=><li style={{display: 'inline-block', margin:'5px'}} key={uuid()}>• Day {index+1} : {p}</li>) : null}
                         </ul>
                     </div>
 

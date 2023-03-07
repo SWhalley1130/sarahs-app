@@ -20,7 +20,7 @@ function Homepage({upcomingTrips, handleDeletedTrip})
         e.stopPropagation();
         if(window.confirm("Are you sure you want to delete this trip?"))
         {
-            fetch(`http://localhost:3000/trips/${parseInt(e.target.name)}`,
+            fetch(`https://my-server-npkp.onrender.com/trips/${parseInt(e.target.name)}`,
             {
                 method: 'DELETE',
                 headers:

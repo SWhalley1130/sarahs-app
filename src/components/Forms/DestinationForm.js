@@ -28,7 +28,7 @@ function DestinationForm({currentTrip, setAddButton, handleUpdatedTrip})
         else
         {
             trip.destinations.splice((formData.day-1),0, formData.info);
-            fetch(`http://localhost:3000/trips/${param.id}`,
+            fetch(`https://my-server-npkp.onrender.com/trips/${param.id}`,
             {
                 method: 'PATCH',
                 headers:

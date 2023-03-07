@@ -23,7 +23,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
 
     useEffect(()=>
     {
-        fetch(`http://localhost:3000/trips/${param.id}`)
+        fetch(`https://my-server-npkp.onrender.com/trips/${param.id}`)
         .then(res=>res.json())
         .then(data=>
         {
@@ -181,7 +181,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
             </>
             :
             <TopBar>
-            <h3>Loading...</h3>
+                <Card.Title>Loading...</Card.Title>
             </TopBar>
             }
         </>

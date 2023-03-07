@@ -8,7 +8,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import {v4 as uuid} from 'uuid';
 
-function EditMode()
+function EditMode({handleUpdatedTrip})
 {
     const param=useParams();
     const nav=useNavigate();
@@ -17,7 +17,7 @@ function EditMode()
 
     useEffect(()=>
     {
-        fetch(`http://localhost:3000/trips/${param.id}`)
+        fetch(`https://my-server-npkp.onrender.com/trips/${param.id}`)
         .then(res=>res.json())
         .then(data=>
         {
@@ -77,7 +77,7 @@ function EditMode()
     function handleSubmit(e)
     {
         e.preventDefault();
-        fetch(`http://localhost:3000/trips/${edittingTrip.id}`,
+        fetch(`http://localhost:3000/trips/${param.id}`,
         {
             method: 'PATCH',
             headers:
@@ -88,7 +88,11 @@ function EditMode()
             body: JSON.stringify(edittingTrip)
         })
         .then(res=>res.json())
-        .then(data=>nav(`/display_trip/${param.id}`))
+        .then(data=>
+        {
+            handleUpdatedTrip(data);
+            nav(`/display_trip/${param.id}`);
+        })
     };
 
     function handleDelete(e,i)
@@ -119,10 +123,11 @@ function EditMode()
 
     return (
         <>
-            <TopBar >
-                <Card.Title>Edit Mode</Card.Title>
-            </TopBar>
             {isLoaded?
+            <>
+             <TopBar >
+             <Card.Title>Edit Mode</Card.Title>
+            </TopBar>
             <Container style={{marginTop:'30px', maxWidth:'50%'}}>
             <Form>
                 <Form.Group required={true} className="mb-3" controlId="formBasicEmail">
@@ -197,8 +202,11 @@ function EditMode()
                 </Form.Group>
             </Form>
             </Container>
+            </>
                 :
-                <h3>Loading...</h3>
+                <TopBar>
+                <Card.Title>Loading...</Card.Title>
+                </TopBar>
             }
         </>
     );
