@@ -29,8 +29,8 @@ function App() {
 
   return (
     <div className="App">
-        <Routes>
-          <Route path="/add_trip" element={<AddTrip/>}/>
+        <Routes> 
+          <Route path="/add_trip" element={<AddTrip upcomingTrips={upcomingTrips} setUpcomingTrips={setUpcomingTrips}/>}/>
           <Route path="/display_trip/:id" element={<DisplayTrip handleUpdatedTrip={handleUpdatedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/" element={<Homepage upcomingTrips={upcomingTrips}/>}/>
         </Routes>
