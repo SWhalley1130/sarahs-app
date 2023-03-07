@@ -9,12 +9,12 @@ import FlightForm from './Forms/FlightForm';
 import HotelForm from './Forms/HotelForm';
 import ActivityForm from "./Forms/ActivityForm";
 import {v4 as uuid} from 'uuid';
+import { Card } from "react-bootstrap";
 
 function DisplayTrip({upcomingTrips, handleUpdatedTrip})
 {
     const param=useParams();
 
-    console.log(param.id)
     const [addButton, setAddButton]=useState('');
     const [currentTrip, setCurrentTrip]=useState({});
     const [isLoaded, setIsLoaded]=useState(false);
@@ -34,7 +34,6 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
    {
         currentTrip.activities.sort((a,b)=>a.day-b.day)
    }
-    
 
     function evalFormToUse()
     {
@@ -55,6 +54,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
             {isLoaded ?
             <>
                 <TopBar>
+                    <Card.Title>Detail View</Card.Title>
                     <Button 
                         onClick={(e)=>setAddButton(e.target.name)}
                         name='guest' 
@@ -122,7 +122,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
             </>
             :
             <TopBar>
-            <h1>Loading...</h1>
+            <h3>Loading...</h3>
             </TopBar>
             }
         </>

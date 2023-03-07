@@ -18,10 +18,10 @@ function Homepage({upcomingTrips})
     return (
         <>
             <TopBar>
-                <Button variant="info">Example</Button>
+                <Card.Title>Home</Card.Title>
+                <Button onClick={()=>nav('/add_trip')} variant="info">Add Trip</Button>
             </TopBar>
-            <Container>
-                <h1>Welcome! Click on any of your trips to get started.</h1>
+            <Container style={{marginTop:'30px'}}>
                 <Row xs={1} md={2} className="g-4">
                 {upcomingTrips.map(trip=>
                     <Card onClick={()=>handleClick(trip)} key={trip.id} style={{ width: '18rem' }}>
