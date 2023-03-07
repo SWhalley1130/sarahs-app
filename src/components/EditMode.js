@@ -77,7 +77,7 @@ function EditMode({handleUpdatedTrip})
     function handleSubmit(e)
     {
         e.preventDefault();
-        fetch(`http://localhost:3000/trips/${param.id}`,
+        fetch(`https://my-server-npkp.onrender.com/trips/${param.id}`,
         {
             method: 'PATCH',
             headers:
