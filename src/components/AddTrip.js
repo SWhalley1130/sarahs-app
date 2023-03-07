@@ -107,7 +107,7 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
         <>
             <TopBar>
                 <Card.Title>Adding Trip</Card.Title>
-                <Button onClick={()=>nav(-1)} variant="info">Exit</Button>
+                <Button onClick={()=>nav(-1)} variant="secondary">Exit</Button>
             </TopBar>
 
             <Container style={{marginTop:'30px', maxWidth:'50%'}}>

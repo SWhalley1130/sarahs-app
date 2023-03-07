@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import AddTrip from "./AddTrip";
 import Homepage from "./Homepage";
 import DisplayTrip from "./DisplayTrip";
+import EditMode from './EditMode';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
           <Route path="/add_trip" element={<AddTrip upcomingTrips={upcomingTrips} setUpcomingTrips={setUpcomingTrips}/>}/>
           <Route path="/display_trip/:id" element={<DisplayTrip handleUpdatedTrip={handleUpdatedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/" element={<Homepage handleDeletedTrip={handleDeletedTrip} upcomingTrips={upcomingTrips}/>}/>
+          <Route exact path="/edit_mode/:id" element={<EditMode/>} />
         </Routes>
     </div>
   );

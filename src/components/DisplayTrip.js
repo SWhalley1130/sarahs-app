@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import Container from "react-bootstrap/Container";
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import TopBar from "./TopBar";
 import Button from "react-bootstrap/Button";
 import GuestForm from './Forms/GuestForm';
@@ -11,15 +11,16 @@ import ActivityForm from "./Forms/ActivityForm";
 import {v4 as uuid} from 'uuid';
 import Card from "react-bootstrap/Card";
 import Table from 'react-bootstrap/Table'
-import { act } from "react-dom/test-utils";
 
 function DisplayTrip({upcomingTrips, handleUpdatedTrip})
 {
     const param=useParams();
+    const nav=useNavigate();
 
     const [addButton, setAddButton]=useState('');
     const [currentTrip, setCurrentTrip]=useState({});
     const [isLoaded, setIsLoaded]=useState(false);
+    const [editMode, setEditMode]=useState(false);
 
     useEffect(()=>
     {
@@ -45,6 +46,18 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
         if (addButton==='hotel') return <HotelForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         if (addButton==='activity') return <ActivityForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         else {return null}
+    }
+
+    function editButton()
+    {
+        return (
+        <Button 
+        size='sm'
+        onClick={(e)=>nav(`/edit_mode/${param.id}`)}
+        variant="warning">
+            ✎
+        </Button>
+        )
     }
 
     return (
@@ -84,10 +97,9 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                             Add Activity
                     </Button>
                     <Button 
-                        onClick={(e)=>console.log(e.target.name)}
-                        name="edit-mode"
-                        variant="warning">
-                            Edit Mode
+                        onClick={(e)=>setEditMode(!editMode)}
+                        variant= { editMode ? "secondary" : "warning"}>
+                        {editMode ? "Turn Off Edit Mode" : "Turn On Edit Mode"}
                     </Button>
                 </TopBar>
                 <Container>
