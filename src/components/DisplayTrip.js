@@ -4,6 +4,9 @@ import {useParams} from "react-router-dom";
 import TopBar from "./TopBar";
 import Button from "react-bootstrap/Button";
 import GuestForm from './Forms/GuestForm';
+import DestinationForm from "./Forms/DestinationForm";
+import FlightForm from './Forms/FlightForm';
+import HotelForm from './Forms/HotelForm';
 import {v4 as uuid} from 'uuid';
 
 function DisplayTrip({upcomingTrips, handleUpdatedTrip})
@@ -14,10 +17,11 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
 
     function evalFormToUse()
     {
-        if (addButton==='guest')
-        {
-            return <GuestForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip}/>
-        }
+        if (addButton==='guest') return <GuestForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
+        if (addButton==='destination') return <DestinationForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
+        if (addButton==='flight') return <FlightForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
+        if (addButton==='hotel') return <HotelForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
+        
         else
         {
             return null;
@@ -31,29 +35,31 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                 <Button 
                     onClick={(e)=>setAddButton(e.target.name)}
                     name='guest' 
-                    variant="info" 
-                    style={{marginLeft:'50px'}}>
+                    variant="info">
                         Add Guest
                 </Button>
                 <Button 
                     onClick={(e)=>setAddButton(e.target.name)}
                     name="destination"
-                    variant="info" 
-                    style={{marginLeft:'50px'}}>
+                    variant="info" >
                         Add Destination
                 </Button>
                 <Button 
                     onClick={(e)=>setAddButton(e.target.name)}
                     name="flight"
-                    variant="info" 
-                    style={{marginLeft:'50px'}}>
+                    variant="info" >
                         Add Flight
                 </Button>
                 <Button 
                     onClick={(e)=>setAddButton(e.target.name)}
+                    name="hotel"
+                    variant="info" >
+                        Add Hotel
+                </Button>
+                <Button 
+                    onClick={(e)=>setAddButton(e.target.name)}
                     name="activity"
-                    variant="info" 
-                    style={{marginLeft:'50px'}}>
+                    variant="info" >
                         Add Activity
                 </Button>
             </TopBar>

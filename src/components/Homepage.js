@@ -18,7 +18,7 @@ function Homepage({upcomingTrips})
     return (
         <>
             <TopBar>
-                <Button variant="info" style={{marginLeft:'50px'}}>Example</Button>
+                <Button variant="info">Example</Button>
             </TopBar>
             <Container>
                 <h1>Welcome! Click on any of your trips to get started.</h1>

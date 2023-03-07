@@ -18,7 +18,6 @@ function App() {
 
   function handleUpdatedTrip(updatedTrip)
   {
-    console.log(updatedTrip.id-1);
     let newArray=JSON.parse(JSON.stringify(upcomingTrips));
     newArray.splice((updatedTrip.id-1),1, updatedTrip);
     setUpcomingTrips(newArray);
