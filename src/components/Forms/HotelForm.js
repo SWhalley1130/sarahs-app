@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import {useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom";
 
 function HotelForm({currentTrip, setAddButton, handleUpdatedTrip})
 {
@@ -15,17 +15,47 @@ function HotelForm({currentTrip, setAddButton, handleUpdatedTrip})
     let trip=JSON.parse(JSON.stringify(currentTrip));
     const nav=useNavigate();
 
+    function handleChange(e)
+    {
+        setFormData({...formData, [e.target.name]:e.target.value});
+    }
+
     function handleSubmit(e)
     {
         e.preventDefault();
+                if (formData.date==='' || formData.info==='')
+        {
+            alert("Please enter information in all fields");
+        }
+        else 
+        {
+            trip.hotels.push(formData);
+            fetch(`http://localhost:3000/trips/${param.id}`,
+            {
+                method: 'PATCH',
+                headers:
+                {
+                    "Content-Type":'application/json',
+                    "Accepts":"application/json"
+                },
+                body: JSON.stringify(trip)
+            })
+            .then(res=>res.json())
+            .then(updatedTrip=>
+            {
+                handleUpdatedTrip(updatedTrip);
+                nav(`/display_trip/${updatedTrip.id}`);
+                setAddButton('');
+            })
+        }
     }
 
     return (
         <Form style={{marginLeft:'30px'}}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Add Hotel</Form.Label>
-                <Form.Control value={formData.date} onChange={e=>console.log(e.target.value)} type="date" />
-                <Form.Control value={formData.info} onChange={e=>console.log(e.target.value)} type="text" placeholder="ex: Holiday Inn" />
+                <Form.Control value={formData.date} onChange={e=>handleChange(e)} name='date' type="date" />
+                <Form.Control value={formData.info} onChange={e=>handleChange(e)} name='info' type="text" placeholder="ex: Holiday Inn" />
             </Form.Group>
             <Button onClick={handleSubmit} variant="info" type="submit">
                 Submit
