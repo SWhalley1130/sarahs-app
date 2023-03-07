@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import Container from "react-bootstrap/Container";
 import {useParams} from "react-router-dom";
 import TopBar from "./TopBar";
@@ -7,6 +7,7 @@ import GuestForm from './Forms/GuestForm';
 import DestinationForm from "./Forms/DestinationForm";
 import FlightForm from './Forms/FlightForm';
 import HotelForm from './Forms/HotelForm';
+import ActivityForm from "./Forms/ActivityForm";
 import {v4 as uuid} from 'uuid';
 
 function DisplayTrip({upcomingTrips, handleUpdatedTrip})
@@ -15,18 +16,26 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
     let currentTrip=upcomingTrips.find(trip=>trip.id===parseInt(param.id))
     const [addButton, setAddButton]=useState('');
 
+
+
     function evalFormToUse()
     {
         if (addButton==='guest') return <GuestForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         if (addButton==='destination') return <DestinationForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         if (addButton==='flight') return <FlightForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         if (addButton==='hotel') return <HotelForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
+        if (addButton==='activity') return <ActivityForm handleUpdatedTrip={handleUpdatedTrip} currentTrip={currentTrip} setAddButton={setAddButton}/>
         
         else
         {
             return null;
         }
     }
+
+    currentTrip.activities.sort((a,b)=>
+    {
+        return a.day-b.day; 
+    })
 
 
     return (
