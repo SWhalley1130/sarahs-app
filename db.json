@@ -128,7 +128,7 @@
         "Victoria, British Columbia",
         "Seattle, Washington "
       ],
-      "Flights": [
+      "flights": [
         {
           "date": "2023-07-15",
           "info": "PHL to YVR"
@@ -188,7 +188,7 @@
         "Victoria, British Columbia",
         "Seattle, Washington "
       ],
-      "Flights": [
+      "flights": [
         {
           "date": "2023-07-15",
           "info": "PHL to YVR"
@@ -248,7 +248,7 @@
         "Victoria, British Columbia",
         "Seattle, Washington "
       ],
-      "Flights": [
+      "flights": [
         {
           "date": "2023-07-15",
           "info": "PHL to YVR"
@@ -308,7 +308,7 @@
         "Victoria, British Columbia",
         "Seattle, Washington "
       ],
-      "Flights": [
+      "flights": [
         {
           "date": "2023-07-15",
           "info": "PHL to YVR"
@@ -368,7 +368,7 @@
         "Victoria, British Columbia",
         "Seattle, Washington "
       ],
-      "Flights": [
+      "flights": [
         {
           "date": "2023-07-15",
           "info": "PHL to YVR"

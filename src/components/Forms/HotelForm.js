@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import {useNavigate} from "react-router-dom";
 
 function HotelForm({currentTrip, setAddButton, handleUpdatedTrip})
 {
@@ -13,7 +12,6 @@ function HotelForm({currentTrip, setAddButton, handleUpdatedTrip})
     })
     let param=useParams();
     let trip=JSON.parse(JSON.stringify(currentTrip));
-    const nav=useNavigate();
 
     function handleChange(e)
     {
@@ -44,7 +42,6 @@ function HotelForm({currentTrip, setAddButton, handleUpdatedTrip})
             .then(updatedTrip=>
             {
                 handleUpdatedTrip(updatedTrip);
-                nav(`/display_trip/${updatedTrip.id}`);
                 setAddButton('');
             })
         }

@@ -7,13 +7,16 @@ import DisplayTrip from "./DisplayTrip";
 import { useEffect, useState } from 'react';
 
 function App() {
-  const [upcomingTrips, setUpcomingTrips]=useState([])
+  const [upcomingTrips, setUpcomingTrips]=useState([]);
 
   useEffect(()=>
   {
     fetch(`http://localhost:3000/trips`)
     .then(res=>res.json())
-    .then(data=>setUpcomingTrips(data))
+    .then(data=>
+    {
+      setUpcomingTrips(data);
+    })
   },[]);
 
   function handleUpdatedTrip(updatedTrip)
