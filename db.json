@@ -18,17 +18,17 @@
       ],
       "flights": [
         {
-          "date": "03-24-2023",
+          "date": "2023-03-24",
           "info": "PHL to MIA"
         },
         {
-          "date": "04-01-2023",
+          "date": "2023-04-01",
           "info": "MIA to PHL"
         }
       ],
       "hotels": [
         {
-          "date": "03-24-2023",
+          "date": "2023-03-24",
           "info": "Miami Inn"
         }
       ],
@@ -70,21 +70,21 @@
       ],
       "flights": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "PHL to YVR"
         },
         {
-          "date": "07-23-2023",
+          "date": "2023-07-23",
           "info": "SEA to PHL"
         }
       ],
       "hotels": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "Vancouver Inn"
         },
         {
-          "date": "07-22-2023",
+          "date": "2023-07-23",
           "info": "Seattle Inn"
         }
       ],
@@ -130,21 +130,21 @@
       ],
       "Flights": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "PHL to YVR"
         },
         {
-          "date": "07-23-2023",
+          "date": "2023-07-23",
           "info": "SEA to PHL"
         }
       ],
       "hotels": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "Vancouver Inn"
         },
         {
-          "date": "07-22-2023",
+          "date": "2023-07-23",
           "info": "Seattle Inn"
         }
       ],
@@ -190,21 +190,21 @@
       ],
       "Flights": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "PHL to YVR"
         },
         {
-          "date": "07-23-2023",
+          "date": "2023-07-23",
           "info": "SEA to PHL"
         }
       ],
       "hotels": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "Vancouver Inn"
         },
         {
-          "date": "07-22-2023",
+          "date": "2023-07-23",
           "info": "Seattle Inn"
         }
       ],
@@ -250,21 +250,21 @@
       ],
       "Flights": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "PHL to YVR"
         },
         {
-          "date": "07-23-2023",
+          "date": "2023-07-23",
           "info": "SEA to PHL"
         }
       ],
       "hotels": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "Vancouver Inn"
         },
         {
-          "date": "07-22-2023",
+          "date": "2023-07-23",
           "info": "Seattle Inn"
         }
       ],
@@ -310,21 +310,21 @@
       ],
       "Flights": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "PHL to YVR"
         },
         {
-          "date": "07-23-2023",
+          "date": "2023-07-23",
           "info": "SEA to PHL"
         }
       ],
       "hotels": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "Vancouver Inn"
         },
         {
-          "date": "07-22-2023",
+          "date": "2023-07-23",
           "info": "Seattle Inn"
         }
       ],
@@ -370,21 +370,21 @@
       ],
       "Flights": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "PHL to YVR"
         },
         {
-          "date": "07-23-2023",
+          "date": "2023-07-23",
           "info": "SEA to PHL"
         }
       ],
       "hotels": [
         {
-          "date": "07-15-2023",
+          "date": "2023-07-15",
           "info": "Vancouver Inn"
         },
         {
-          "date": "07-22-2023",
+          "date": "2023-07-23",
           "info": "Seattle Inn"
         }
       ],

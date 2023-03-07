@@ -8,7 +8,7 @@ function TopBar(props)
 {
     return (
        <Nav className="topbar">
-            <Container style={{display:'flex', gap:'2% 2%', 'align-items':'baseline'}}>
+            <Container style={{display:'flex', gap:'2% 2%', alignItems:'baseline'}}>
                 <NavLink to="/"><img className="ship-logo" src={ship}/></NavLink>
                 {props.children}
             </Container>

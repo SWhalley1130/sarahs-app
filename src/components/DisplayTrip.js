@@ -85,6 +85,11 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                     {currentTrip.flights.map(fl=>
                         <li key={uuid()}>Date: {fl.date} - Info: {fl.info}</li>)}
                 </ul>
+                <h4>Hotels:</h4>
+                <ul>
+                    {currentTrip.hotels.map(hotel=>
+                        <li key={uuid()}>Date: {hotel.date} - Info: {hotel.info}</li>)}
+                </ul>
                 <h4>Activities:</h4>
                 <ul>
                     {currentTrip.activities.map(thing=>
