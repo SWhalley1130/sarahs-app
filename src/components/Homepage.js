@@ -1,4 +1,3 @@
-import React from "react";
 import {useNavigate} from "react-router-dom"
 import Container from "react-bootstrap/Container";
 import Card from "react-bootstrap/Card";
@@ -39,6 +38,7 @@ function Homepage({upcomingTrips, handleDeletedTrip})
             <TopBar>
                 <Card.Title>Home</Card.Title>
                 <Button onClick={()=>nav('/add_trip')} variant="info">Add Trip</Button>
+                <Button onClick={()=>nav('/weather')} variant="info">Current Weather</Button>
             </TopBar>
             <Container style={{marginTop:'30px'}}>
                 <Row xs={1} md={2} className="g-4">

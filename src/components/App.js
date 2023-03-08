@@ -5,6 +5,7 @@ import AddTrip from "./AddTrip";
 import Homepage from "./Homepage";
 import DisplayTrip from "./DisplayTrip";
 import EditMode from './EditMode';
+import Weather from './Weather';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
           <Route path="/display_trip/:id" element={<DisplayTrip handleUpdatedTrip={handleUpdatedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/" element={<Homepage handleDeletedTrip={handleDeletedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/edit/:id" element={<EditMode handleUpdatedTrip={handleUpdatedTrip}/>} />
+          <Route path="/weather" element={<Weather />} />
         </Routes>
     </div>
   );
