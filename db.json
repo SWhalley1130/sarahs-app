@@ -2,6 +2,8 @@
   "trips": [
     {
       "id": 1,
+      "budget":5000,
+      "cruisePrice":2000,
       "name": "Beach Bum",
       "description": "A quick trip to get some sunshine and relax on the beach",
       "image": "https://photostorage.explorest.com/usa/hawaii/vlim-mai-poina-palmtree-feed.jpg",
@@ -53,6 +55,8 @@
     },
     {
       "id": 2,
+      "budget":5000,
+      "cruisePrice":2000,
       "name": "Glaciers Galore ",
       "description": "Wintery family vacation to sightsee",
       "image": "https://www.travelalaska.com/sites/default/files/2021-12/ExploreAlaska_Itineraries_See%20Alaska%27s%20Grandest%20Glaciers%20_Hero_%28ATIA%29_0.jpg",
