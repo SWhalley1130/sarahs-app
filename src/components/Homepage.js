@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import TopBar from "./TopBar";
 import Row from 'react-bootstrap/Row';
+import ProgressBar from "./ProgressBar";
 
 function Homepage({upcomingTrips, handleDeletedTrip})
 {
@@ -12,6 +13,17 @@ function Homepage({upcomingTrips, handleDeletedTrip})
     function handleClick(trip)
     {
         nav(`/display_trip/${trip.id}`);
+    }
+
+    function sumUpCosts(trip)
+    {
+        let sum=trip.cruisePrice;
+
+        trip.flights.forEach(fl=>sum=sum+fl.price);
+        trip.hotels.forEach(ho=>sum=sum+ho.price);
+        trip.activities.forEach(act=>sum=sum+act.price);
+
+        return sum;
     }
 
     function handleDelete(e)
@@ -47,7 +59,7 @@ function Homepage({upcomingTrips, handleDeletedTrip})
                         <Card.Img src={trip.image}/>
                         <Card.Body>
                             <Card.Title>{trip.name}</Card.Title>
-                            <Card.Text>{`${trip.cruisePrice} / ${trip.budget}`}</Card.Text>
+                            <ProgressBar trip={trip}/>
                             <Card.Text>{trip.description}</Card.Text>
                         </Card.Body>
                         <Button name={trip.id} onClick={handleDelete} size='sm' variant="danger">Delete</Button>

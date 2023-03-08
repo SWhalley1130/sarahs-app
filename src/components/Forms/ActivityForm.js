@@ -8,14 +8,22 @@ function ActivityForm({currentTrip, setAddButton, handleUpdatedTrip})
     const [formData, setFormData]=useState(
     {
         day:'',
-        info:''
+        info:'',
+        price:0
     })
     let param=useParams();
     let trip=JSON.parse(JSON.stringify(currentTrip));
 
     function handleChange(e)
     {
-        setFormData({...formData, [e.target.name]:e.target.value});
+        if (e.target.name==="price") 
+        {
+            setFormData({...formData, [e.target.name]:parseFloat(e.target.value)});
+        }
+        else
+        {
+            setFormData({...formData, [e.target.name]:e.target.value});
+        }
     }
 
     function handleSubmit(e)
@@ -53,6 +61,7 @@ function ActivityForm({currentTrip, setAddButton, handleUpdatedTrip})
                 <Form.Label>Add Activity</Form.Label>
                 <Form.Control value={formData.day} onChange={handleChange} type="number" placeholder="Day" name='day'/>
                 <Form.Control value={formData.info} onChange={handleChange} type="text" placeholder="Name of Activity" name='info' />
+                <Form.Control value={formData.price} onChange={handleChange} type="number" name='price' />
             </Form.Group>
             <Button onClick={handleSubmit} variant="info" type="submit">
                 Submit

@@ -11,6 +11,7 @@ import ActivityForm from "./Forms/ActivityForm";
 import {v4 as uuid} from 'uuid';
 import Card from "react-bootstrap/Card";
 import Table from 'react-bootstrap/Table'
+import ProgressBar from "./ProgressBar";
 
 function DisplayTrip({upcomingTrips, handleUpdatedTrip})
 {
@@ -95,7 +96,9 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                         {evalFormToUse()}
                     </div>
                     <h1>{currentTrip.name}</h1>
+                    <ProgressBar trip={currentTrip}/>
                     <h3>{currentTrip.description}</h3>
+                    <h4>Base Cost of Cruise: ${currentTrip.cruisePrice}</h4>
                     <h4>Guests:</h4>
                     <ul>
                         {currentTrip.guests.map(person=>
@@ -125,6 +128,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                                     <tr>
                                         <th>Day</th>
                                         <th>Activity</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -132,6 +136,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                                         <tr key={uuid()}>
                                             <td>{activity.day}</td>
                                             <td>{activity.info}</td>
+                                            <td>${activity.price}</td>
                                         </tr>)}
                                 </tbody>
                             </Table>
@@ -145,6 +150,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                                     <tr>
                                         <th>Date</th>
                                         <th>Flight Information</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -152,6 +158,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                                         <tr key={uuid()}>
                                             <td>{flight.date}</td>
                                             <td>{flight.info}</td>
+                                            <td>${flight.price}</td>
                                         </tr>)}
                                 </tbody>
                             </Table>
@@ -165,6 +172,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                                     <tr>
                                         <th>Date</th>
                                         <th>Hotel</th>
+                                        <th>Price</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -172,6 +180,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                                         <tr key={uuid()}>
                                             <td>{hotel.date}</td>
                                             <td>{hotel.info}</td>
+                                            <td>${hotel.price}</td>
                                         </tr>)}
                                 </tbody>
                             </Table>

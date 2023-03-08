@@ -8,14 +8,22 @@ function FlightForm({currentTrip, setAddButton, handleUpdatedTrip})
     const [formData, setFormData]=useState(
     {
         date:"",
-        info:""
+        info:"",
+        price:0
     })
     let param=useParams();
     let trip=JSON.parse(JSON.stringify(currentTrip));
 
     function handleChange(e)
     {
-        setFormData({...formData, [e.target.name]:e.target.value});
+        if (e.target.name==="price") 
+        {
+            setFormData({...formData, [e.target.name]:parseFloat(e.target.value)});
+        }
+        else
+        {
+            setFormData({...formData, [e.target.name]:e.target.value});
+        }
     }
 
     function handleSubmit(e)
@@ -53,6 +61,7 @@ function FlightForm({currentTrip, setAddButton, handleUpdatedTrip})
                 <Form.Label>Add Flight</Form.Label>
                 <Form.Control value={formData.date} onChange={e=>handleChange(e)} name="date" type="date" />
                 <Form.Control value={formData.info} onChange={e=>handleChange(e)} name="info" type="text" placeholder="ex: DEN to PHL" />
+                <Form.Control value={formData.price} onChange={e=>handleChange(e)} name="price" type="number" placeholder="ex: DEN to PHL" />
             </Form.Group>
             <Button onClick={handleSubmit} variant="info" type="submit">
                 Submit
