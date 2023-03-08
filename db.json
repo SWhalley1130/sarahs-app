@@ -21,35 +21,42 @@
       "flights": [
         {
           "date": "2023-03-24",
-          "info": "PHL to MIA"
+          "info": "PHL to MIA",
+          "price":300
         },
         {
           "date": "2023-04-01",
-          "info": "MIA to PHL"
+          "info": "MIA to PHL",
+          "price":300
         }
       ],
       "hotels": [
         {
           "date": "2023-03-24",
-          "info": "Miami Inn"
+          "info": "Miami Inn",
+          "price":100
         },
         {
           "date": "2023-03-08",
-          "info": "Holiday Inn"
+          "info": "Holiday Inn",
+          "price":150
         }
       ],
       "activities": [
         {
           "day": 1,
-          "info": "Go to the bar"
+          "info": "Go to the bar",
+          "price":40
         },
         {
           "day": 3,
-          "info": "Swim in the pool"
+          "info": "Swim in the pool",
+          "price":0
         },
         {
           "day": 5,
-          "info": "Nature tour"
+          "info": "Nature tour",
+          "price":30
         }
       ]
     },
@@ -79,39 +86,47 @@
       "flights": [
         {
           "date": "2023-07-15",
-          "info": "PHL to YVR"
+          "info": "PHL to YVR",
+          "price":300
         },
         {
           "date": "2023-07-23",
-          "info": "SEA to PHL"
+          "info": "SEA to PHL",
+          "price":300
         }
       ],
       "hotels": [
         {
           "date": "2023-07-15",
-          "info": "Vancouver Inn"
+          "info": "Vancouver Inn",
+          "price":100
         },
         {
           "date": "2023-07-23",
-          "info": "Seattle Inn"
+          "info": "Seattle Inn",
+          "price":180
         }
       ],
       "activities": [
         {
           "day": 1,
-          "info": "Power Nap"
+          "info": "Power Nap",
+          "price":0
         },
         {
           "day": 3,
-          "info": "Look at a glacier"
+          "info": "Look at a glacier",
+          "price":20
         },
         {
           "day": 5,
-          "info": "Watch Titanic and panic"
+          "info": "Watch Titanic and panic",
+          "price":5
         },
         {
           "day": 7,
-          "info": "Eat some fancy food"
+          "info": "Eat some fancy food",
+          "price":70
         }
       ]
     }

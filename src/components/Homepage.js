@@ -47,7 +47,7 @@ function Homepage({upcomingTrips, handleDeletedTrip})
                         <Card.Img src={trip.image}/>
                         <Card.Body>
                             <Card.Title>{trip.name}</Card.Title>
-                            <Card.Text>{`${trip.cruiseCost} / ${trip.budget}`}</Card.Text>
+                            <Card.Text>{`${trip.cruisePrice} / ${trip.budget}`}</Card.Text>
                             <Card.Text>{trip.description}</Card.Text>
                         </Card.Body>
                         <Button name={trip.id} onClick={handleDelete} size='sm' variant="danger">Delete</Button>
