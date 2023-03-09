@@ -57,14 +57,14 @@ function Homepage({upcomingTrips, handleDeletedTrip, isLoaded})
             <Container style={{marginTop:'30px'}}>
                 <Row xs={1} md={2} className="g-4">
                 {upcomingTrips.map(trip=>
-                    <Card onClick={()=>handleClick(trip)} key={trip.id} style={{ width: '18rem' }}>
+                    <Card onClick={()=>handleClick(trip)} key={trip.id} style={{ width: '18em', paddingLeft:'0', paddingRight:'0', marginLeft:"15px" }}>
                         <Card.Img src={trip.image}/>
                         <Card.Body>
                             <Card.Title>{trip.name}</Card.Title>
                             <ProgressBar trip={trip}/>
                             <Card.Text>{trip.description}</Card.Text>
                         </Card.Body>
-                        <Button name={trip.id} onClick={handleDelete} size='sm' variant="danger">Delete</Button>
+                        <Button style={{position:'absolute'}} name={trip.id} onClick={handleDelete} size='sm' variant="danger">Delete</Button>
                     </Card>
                     )}
                 </Row>

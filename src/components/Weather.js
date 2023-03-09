@@ -9,11 +9,16 @@ import fog from "../images/fog.png";
 import rain from "../images/rain.png";
 import snow from "../images/snow.png";
 import thunderstorm from "../images/thunderstorm.png";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { useNavigate } from "react-router-dom";
 
 function Weather()
 {
+    let nav=useNavigate();
     const [isLoaded, setIsLoaded]=useState(false);
     const [currentWeather, setCurrentWeather]=useState({}); 
+    const [dateIndex, setDateIndex]=useState(0);
 
     let imageSource;
     let weatherStatus;
@@ -23,7 +28,7 @@ function Weather()
     {
         if(isLoaded)
         {
-            let weatherCode=currentWeather.daily.weathercode[0];
+            let weatherCode=currentWeather.daily.weathercode[dateIndex];
             if (weatherCode===0)
             {
                 weatherStatus="Clear";
@@ -79,12 +84,22 @@ function Weather()
             {
                 console.error("Error Code = " + error.code + " - " + error.message);
             })
-    },[]);
+    },[]); 
 
-    function formatTime()
+    function formatTime(date)
     {
-        let date=currentWeather.daily.time[0].split('-');
-        return (`Date: ${date[1]}-${date[2]}-${date[0]}`)
+        let formatted=date.split('-');
+        return (`Date: ${formatted[1]}-${formatted[2]}-${formatted[0]}`)
+    }
+
+    function convertToFahrenheit(n)
+    {
+        return ((n*(9/5))+32)
+    }
+
+    function handleChange(e)
+    {
+        setDateIndex(parseInt(e.target.value))
     }
 
     return (
@@ -93,16 +108,21 @@ function Weather()
             <>
             <TopBar>
                 <Card.Title>Current Weather</Card.Title>
+                <Button onClick={()=>nav(-1)} variant="secondary">Exit</Button>
             </TopBar>
             <Container>
                 <Card style={{marginTop:'30px', textAlign:'center'}}>
+                    <Form.Select value={dateIndex} onChange={handleChange}>
+                        {currentWeather.daily.time.map((day,index)=>
+                            <option value={index} key={day}>{formatTime(day)}</option>)}
+                    </Form.Select>
                     <Card.Body>
                         <Card.Img src={imageSource} style={{maxWidth:'20%'}}/>
-                        <Card.Title>{formatTime()}</Card.Title>
-                        <Card.Text>High: {currentWeather.daily.temperature_2m_max[0]}°C</Card.Text>
-                        <Card.Text>Low: {currentWeather.daily.temperature_2m_min[0]}°C</Card.Text>
-                        <Card.Text>Chance of Precipitation: {currentWeather.daily.precipitation_probability_mean[0]}%</Card.Text>
-                        <Card.Text>Weather: {weatherStatus}</Card.Text>
+                        <Card.Title>{formatTime(currentWeather.daily.time[dateIndex])}</Card.Title>
+                        <Card.Text><strong>High:</strong> {currentWeather.daily.temperature_2m_max[dateIndex].toFixed(2)}°C or {convertToFahrenheit(currentWeather.daily.temperature_2m_max[dateIndex]).toFixed(2)}°F</Card.Text>
+                        <Card.Text><strong>Low:</strong> {currentWeather.daily.temperature_2m_min[dateIndex].toFixed(2)}°C or {convertToFahrenheit(currentWeather.daily.temperature_2m_min[dateIndex]).toFixed(2)}°F</Card.Text>
+                        <Card.Text><strong>Chance of Precipitation:</strong> {currentWeather.daily.precipitation_probability_mean[dateIndex]}%</Card.Text>
+                        <Card.Text><strong>Weather:</strong> {weatherStatus}</Card.Text>
                     </Card.Body>
                 </Card>
             </Container>
