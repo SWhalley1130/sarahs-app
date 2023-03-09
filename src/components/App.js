@@ -43,7 +43,7 @@ function App() {
           <Route path="/display_trip/:id" element={<DisplayTrip handleUpdatedTrip={handleUpdatedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/" element={<Homepage isLoaded={isLoaded} handleDeletedTrip={handleDeletedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/edit/:id" element={<EditMode handleUpdatedTrip={handleUpdatedTrip}/>} />
-          <Route path="/weather" element={<Weather />} />
+          <Route path="/#/weather" element={<Weather />} />
         </Routes>
     </div>
   );
