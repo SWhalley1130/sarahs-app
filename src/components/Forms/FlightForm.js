@@ -9,7 +9,7 @@ function FlightForm({currentTrip, setAddButton, handleUpdatedTrip})
     {
         date:"",
         info:"",
-        price:0
+        price:""
     })
     let param=useParams();
     let trip=JSON.parse(JSON.stringify(currentTrip));
@@ -61,7 +61,7 @@ function FlightForm({currentTrip, setAddButton, handleUpdatedTrip})
                 <Form.Label>Add Flight</Form.Label>
                 <Form.Control value={formData.date} onChange={e=>handleChange(e)} name="date" type="date" />
                 <Form.Control value={formData.info} onChange={e=>handleChange(e)} name="info" type="text" placeholder="ex: DEN to PHL" />
-                <Form.Control value={formData.price} onChange={e=>handleChange(e)} name="price" type="number" placeholder="ex: DEN to PHL" />
+                <Form.Control value={formData.price} onChange={e=>handleChange(e)} name="price" type="number" placeholder="Price" />
             </Form.Group>
             <Button onClick={handleSubmit} variant="info" type="submit">
                 Submit

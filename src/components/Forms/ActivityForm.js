@@ -9,7 +9,7 @@ function ActivityForm({currentTrip, setAddButton, handleUpdatedTrip})
     {
         day:'',
         info:'',
-        price:0
+        price:""
     })
     let param=useParams();
     let trip=JSON.parse(JSON.stringify(currentTrip));
@@ -61,7 +61,7 @@ function ActivityForm({currentTrip, setAddButton, handleUpdatedTrip})
                 <Form.Label>Add Activity</Form.Label>
                 <Form.Control value={formData.day} onChange={handleChange} type="number" placeholder="Day" name='day'/>
                 <Form.Control value={formData.info} onChange={handleChange} type="text" placeholder="Name of Activity" name='info' />
-                <Form.Control value={formData.price} onChange={handleChange} type="number" name='price' />
+                <Form.Control value={formData.price} onChange={handleChange} type="number" name='price' placeholder="Price"/>
             </Form.Group>
             <Button onClick={handleSubmit} variant="info" type="submit">
                 Submit

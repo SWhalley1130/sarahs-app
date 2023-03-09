@@ -38,6 +38,20 @@ function EditMode({handleUpdatedTrip})
             edittingTrip.guests[index]=e.target.value;
             setEdittingTrip({...edittingTrip})
         }
+        else if (e.target.name.includes('cruisePrice'))
+        {
+            let num;
+            e.target.value==="" ? num=0 : num = parseFloat(e.target.value);
+            edittingTrip.cruisePrice=num; 
+            setEdittingTrip({...edittingTrip});
+        }
+        else if (e.target.name.includes('budget'))
+        {
+            let num;
+            e.target.value==="" ? num=0 : num = parseFloat(e.target.value);
+            edittingTrip.budget=num; 
+            setEdittingTrip({...edittingTrip});
+        }
         else
         {
             setEdittingTrip({...edittingTrip, [e.target.name]:e.target.value})
@@ -126,17 +140,26 @@ function EditMode({handleUpdatedTrip})
             {isLoaded?
             <>
              <TopBar >
-             <Card.Title>Edit Mode</Card.Title>
+                <Card.Title>Edit Mode</Card.Title>
+                <Button onClick={()=>nav(-1)} variant="secondary">Exit</Button>
             </TopBar>
             <Container style={{marginTop:'30px', maxWidth:'50%'}}>
             <Form>
-                <Form.Group required={true} className="mb-3" controlId="formBasicEmail">
+                <Form.Group required={true} className="mb-3">
                     <Form.Label><strong>Change Name</strong></Form.Label>
                     <Form.Control value={edittingTrip.name} onChange={handleChange} type="text" name='name' />
                     <br/>
 
                     <Form.Label><strong>Change Description</strong></Form.Label>
                     <Form.Control value={edittingTrip.description} onChange={handleChange} type="text" name='description' required/>
+                    <br/> 
+
+                    <Form.Label><strong>Change Base Price</strong></Form.Label>
+                    <Form.Control value={edittingTrip.cruisePrice} onChange={handleChange} type="number" name='cruisePrice' required/>
+                    <br/> 
+
+                    <Form.Label><strong>Change Budget</strong></Form.Label>
+                    <Form.Control value={edittingTrip.budget} onChange={handleChange} type="text" name='budget' required/>
                     <br/> 
 
                     <Form.Label><strong>Change Image URL</strong></Form.Label>
@@ -146,7 +169,7 @@ function EditMode({handleUpdatedTrip})
                     <Form.Label><strong>Change Guests</strong></Form.Label>
                     { 
                         edittingTrip.guests.map((person,index)=>
-                            <InputGroup key={uuid()}>
+                            <InputGroup key={index}>
                                 <Button name='guests' onClick={e=>handleDelete(e, index)} variant="danger">Delete</Button>
                                 <Form.Control value={person} onChange={e=>handleChange(e, index)} type='text' name='guests'  required/>
                             </InputGroup>
@@ -157,7 +180,7 @@ function EditMode({handleUpdatedTrip})
                     <Form.Label><strong>Change Destinations</strong></Form.Label>
                     { 
                         edittingTrip.destinations.map((place,index)=>
-                            <InputGroup key={uuid()}>
+                            <InputGroup key={`${index}`}>
                                 <Button name='destinations' onClick={e=>handleDelete(e, index)}  variant="danger">Delete</Button>
                                 <Form.Control value={place} onChange={e=>handleChange(e, index)} type='text' name='destinations' required />
                             </InputGroup>
@@ -167,17 +190,17 @@ function EditMode({handleUpdatedTrip})
 
                     <Form.Label><strong>Change Activities</strong></Form.Label>
                     {edittingTrip.activities.map((act,index)=>
-                        <InputGroup key={uuid()}>
+                        <InputGroup key={index}>
                             <Button name='activities' onClick={e=>handleDelete(e, index)} variant="danger">Delete</Button>
-                            <Form.Control value={act.day} onChange={e=>handleTwoChange(e, index)} type='number' name='activities day' required />
-                            <Form.Control value={act.info} onChange={e=>handleTwoChange(e, index)} type='text' name='activities info' required />
+                            <Form.Control id='1' value={act.day} onChange={e=>handleTwoChange(e, index)} type='number' name='activities day' required />
+                            <Form.Control id='2' value={act.info} onChange={e=>handleTwoChange(e, index)} type='text' name='activities info' required />
                         </InputGroup>
                     )}
                     <br/>
 
                     <Form.Label><strong>Change Flights</strong></Form.Label>
                     {edittingTrip.flights.map((fl,index)=>
-                        <InputGroup key={uuid()}>
+                        <InputGroup key={index}>
                             <Button name='flights' onClick={e=>handleDelete(e, index)} variant="danger">Delete</Button>
                             <Form.Control value={fl.date} onChange={e=>handleTwoChange(e, index)} type='date' name='flights date' required />
                             <Form.Control value={fl.info} onChange={e=>handleTwoChange(e, index)} type='text' name='flights info' required />
@@ -187,7 +210,7 @@ function EditMode({handleUpdatedTrip})
 
                     <Form.Label><strong>Change Hotels</strong></Form.Label>
                     {edittingTrip.hotels.map((ho,index)=>
-                        <InputGroup key={uuid()}>
+                        <InputGroup key={index}>
                             <Button name='hotels' onClick={e=>handleDelete(e, index)} variant="danger">Delete</Button>
                             <Form.Control value={ho.date} onChange={e=>handleTwoChange(e, index)} type='date' name='hotels date' required />
                             <Form.Control value={ho.info} onChange={e=>handleTwoChange(e, index)} type='text' name='hotels info' required />
