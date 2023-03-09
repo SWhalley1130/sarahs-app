@@ -108,7 +108,10 @@ function Weather()
             </Container>
             </>
             :
-            <h1>Loading...</h1>}
+            <TopBar>
+                <Card.Title>Loading...</Card.Title>
+            </TopBar>
+        }
         </>
     )
 }

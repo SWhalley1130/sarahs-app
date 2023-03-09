@@ -23,7 +23,7 @@ function ProgressBar({trip})
         width: `${percent>100 ? 100 :percent}%`,
         backgroundColor: `${percent>100 ? 'red' : '#6ab89e'}`,
         borderRadius: 'inherit',
-        textAlign: 'center'
+        textAlign: 'center',
       }
     
       const labelStyles = {
@@ -35,7 +35,7 @@ function ProgressBar({trip})
     return (
       <>
         <div style={containerStyles}>
-            <div style={fillerStyles}>
+            <div style={fillerStyles}> 
                 <div style={labelStyles}>${sum}</div>
             </div>
         </div>

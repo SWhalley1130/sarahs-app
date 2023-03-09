@@ -10,14 +10,16 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [upcomingTrips, setUpcomingTrips]=useState([]);
+  const [isLoaded, setIsLoaded]=useState(false)
 
   useEffect(()=>
-  {
+  { 
     fetch(`https://my-server-npkp.onrender.com/trips`)
     .then(res=>res.json())
     .then(data=>
     {
       setUpcomingTrips(data);
+      setIsLoaded(true);
     })
   },[]);
 
@@ -39,7 +41,7 @@ function App() {
         <Routes> 
           <Route path="/add_trip" element={<AddTrip upcomingTrips={upcomingTrips} setUpcomingTrips={setUpcomingTrips}/>}/>
           <Route path="/display_trip/:id" element={<DisplayTrip handleUpdatedTrip={handleUpdatedTrip} upcomingTrips={upcomingTrips}/>}/>
-          <Route exact path="/" element={<Homepage handleDeletedTrip={handleDeletedTrip} upcomingTrips={upcomingTrips}/>}/>
+          <Route exact path="/" element={<Homepage isLoaded={isLoaded} handleDeletedTrip={handleDeletedTrip} upcomingTrips={upcomingTrips}/>}/>
           <Route exact path="/edit/:id" element={<EditMode handleUpdatedTrip={handleUpdatedTrip}/>} />
           <Route path="/weather" element={<Weather />} />
         </Routes>

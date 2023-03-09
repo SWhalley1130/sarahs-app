@@ -6,7 +6,7 @@ import TopBar from "./TopBar";
 import Row from 'react-bootstrap/Row';
 import ProgressBar from "./ProgressBar";
 
-function Homepage({upcomingTrips, handleDeletedTrip})
+function Homepage({upcomingTrips, handleDeletedTrip, isLoaded})
 {
     const nav=useNavigate();
 
@@ -47,6 +47,8 @@ function Homepage({upcomingTrips, handleDeletedTrip})
 
     return (
         <>
+        {isLoaded? 
+        <>
             <TopBar>
                 <Card.Title>Home</Card.Title>
                 <Button onClick={()=>nav('/add_trip')} variant="info">Add Trip</Button>
@@ -67,6 +69,12 @@ function Homepage({upcomingTrips, handleDeletedTrip})
                     )}
                 </Row>
             </Container>
+            </>
+            :
+            <TopBar>
+                <Card.Title>Loading...</Card.Title>
+            </TopBar>
+            }
         </>
     )
 }

@@ -98,7 +98,7 @@ function DisplayTrip({upcomingTrips, handleUpdatedTrip})
                     <h1>{currentTrip.name}</h1>
                     <ProgressBar trip={currentTrip}/>
                     <h3>{currentTrip.description}</h3>
-                    <h4>Base Cost of Cruise: ${currentTrip.cruisePrice}</h4>
+                    <h5>Base Cost of Cruise: ${currentTrip.cruisePrice}</h5>
                     <h4>Guests:</h4>
                     <ul>
                         {currentTrip.guests.map(person=>
