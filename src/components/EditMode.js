@@ -6,10 +6,9 @@ import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-import {v4 as uuid} from 'uuid';
 
 function EditMode({handleUpdatedTrip})
-{
+{   
     const param=useParams();
     const nav=useNavigate();
     const [isLoaded, setIsLoaded]=useState(false);
@@ -69,6 +68,10 @@ function EditMode({handleUpdatedTrip})
         {
             deepCopy.flights[index].info=e.target.value;
         }
+        else if (e.target.name.includes('flights price'))
+        {
+            deepCopy.flights[index].price=parseFloat(e.target.value);
+        }
         else if (e.target.name.includes('hotels info'))
         {
             deepCopy.hotels[index].info=e.target.value;
@@ -77,6 +80,10 @@ function EditMode({handleUpdatedTrip})
         {
             deepCopy.hotels[index].date=e.target.value;
         }
+        else if (e.target.name.includes('hotels price'))
+        {
+            deepCopy.hotels[index].price=parseFloat(e.target.value);
+        }
         else if (e.target.name.includes('activities day'))
         {
             deepCopy.activities[index].day=e.target.value;
@@ -84,6 +91,10 @@ function EditMode({handleUpdatedTrip})
         else if (e.target.name.includes('activities info'))
         {
             deepCopy.activities[index].info=e.target.value;
+        }
+        else if (e.target.name.includes('activities price'))
+        {
+            deepCopy.activities[index].price=parseFloat(e.target.value);
         }
         setEdittingTrip(deepCopy);
     };
@@ -143,7 +154,7 @@ function EditMode({handleUpdatedTrip})
                 <Card.Title>Edit Mode</Card.Title>
                 <Button onClick={()=>nav(-1)} variant="secondary">Exit</Button>
             </TopBar>
-            <Container style={{marginTop:'30px', maxWidth:'50%'}}>
+            <Container style={{marginTop:'30px', maxWidth:'75%'}}>
             <Form>
                 <Form.Group required={true} className="mb-3">
                     <Form.Label><strong>Change Name</strong></Form.Label>
@@ -192,8 +203,9 @@ function EditMode({handleUpdatedTrip})
                     {edittingTrip.activities.map((act,index)=>
                         <InputGroup key={index}>
                             <Button name='activities' onClick={e=>handleDelete(e, index)} variant="danger">Delete</Button>
-                            <Form.Control id='1' value={act.day} onChange={e=>handleTwoChange(e, index)} type='number' name='activities day' required />
-                            <Form.Control id='2' value={act.info} onChange={e=>handleTwoChange(e, index)} type='text' name='activities info' required />
+                            <Form.Control value={act.day} onChange={e=>handleTwoChange(e, index)} type='number' name='activities day' required />
+                            <Form.Control value={act.info} onChange={e=>handleTwoChange(e, index)} type='text' name='activities info' required />
+                            <Form.Control value={act.price} onChange={e=>handleTwoChange(e, index)} type='number' name='activities price' required />
                         </InputGroup>
                     )}
                     <br/>
@@ -204,6 +216,7 @@ function EditMode({handleUpdatedTrip})
                             <Button name='flights' onClick={e=>handleDelete(e, index)} variant="danger">Delete</Button>
                             <Form.Control value={fl.date} onChange={e=>handleTwoChange(e, index)} type='date' name='flights date' required />
                             <Form.Control value={fl.info} onChange={e=>handleTwoChange(e, index)} type='text' name='flights info' required />
+                            <Form.Control value={fl.price} onChange={e=>handleTwoChange(e, index)} type='number' name='flights price' required />
                         </InputGroup>
                     )}
                     <br/>
@@ -214,6 +227,7 @@ function EditMode({handleUpdatedTrip})
                             <Button name='hotels' onClick={e=>handleDelete(e, index)} variant="danger">Delete</Button>
                             <Form.Control value={ho.date} onChange={e=>handleTwoChange(e, index)} type='date' name='hotels date' required />
                             <Form.Control value={ho.info} onChange={e=>handleTwoChange(e, index)} type='text' name='hotels info' required />
+                            <Form.Control value={ho.price} onChange={e=>handleTwoChange(e, index)} type='numbe' name='hotels price' required />
                         </InputGroup>
                     )}
                     <br/>

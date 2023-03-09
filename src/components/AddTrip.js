@@ -20,20 +20,33 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
     {
         name:'',
         description:'',
+        cruisePrice:'',
+        budget:'',
         URL:'',
-        guest:'',
+        guest:'', 
         destInfo:'',
         flDate:'',
         flInfo:'',
+        flPrice:'',
         hoDate:'',
         hoInfo:'',
+        hoPrice:'',
         actDay:'',
-        actInfo:''
+        actInfo:'',
+        actPrice:''
     });
     
     function handleChange(e)
     {
-        setFormData({...formData, [e.target.name]:e.target.value})
+        if (e.target.type==='number')
+        {
+            let num = parseFloat(e.target.value);
+            setFormData({...formData, [e.target.name]:num});
+        }
+        else
+        {
+            setFormData({...formData, [e.target.name]:e.target.value});
+        }
     }
 
     function handleGuestClick()
@@ -52,23 +65,23 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
 
     function handleFlClick()
     {
-        flights.push({date: formData.flDate, info: formData.flInfo});
+        flights.push({date: formData.flDate, info: formData.flInfo, price:parseFloat(formData.flPrice)});
         setFlights(flights);
-        setFormData({...formData, flDate:'', flInfo:''});
+        setFormData({...formData, flDate:'', flInfo:'', flPrice:''});
     }
 
     function handleHoClick()
     {
-        hotels.push({date: formData.hoDate, info: formData.hoInfo});
+        hotels.push({date: formData.hoDate, info: formData.hoInfo, price: parseFloat(formData.hoPrice)});
         setHotels(hotels);
-        setFormData({...formData, hoDate:'', hoInfo:''});
+        setFormData({...formData, hoDate:'', hoInfo:'', hoPrice:''});
     }
 
     function handleActClick()
     {
-        activities.push({day: formData.actDay, info: formData.actInfo});
+        activities.push({day: formData.actDay, info: formData.actInfo, price:parseFloat(formData.actPrice)});
         setActivities(activities);
-        setFormData({...formData, actDay:'', actInfo:''});
+        setFormData({...formData, actDay:'', actInfo:'', actPrice:''});
     }
 
     function handleSubmit(e)
@@ -78,6 +91,8 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
         {
             name:formData.name, 
             description:formData.description,
+            budget:formData.budget,
+            cruisePrice:formData.cruisePrice,
             image:formData.URL,
             guests:guests,
             destinations:destinations, 
@@ -122,6 +137,14 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
                     <Form.Control value={formData.description} name='description' onChange={handleChange} type="text" placeholder="ex: Sightseeing in the bay" />
                     <br/>
 
+                    <Form.Label><strong>Cruise Base Price</strong></Form.Label>
+                    <Form.Control value={formData.basePrice} name='cruisePrice' onChange={handleChange} type="number" placeholder="Price" />
+                    <br/>
+
+                    <Form.Label><strong>Budget</strong></Form.Label>
+                    <Form.Control value={formData.budget} name='budget' onChange={handleChange} type="number" placeholder="Budget" />
+                    <br/>
+
                     <Form.Label><strong>Trip Image URL</strong></Form.Label>
                     <Form.Control value={formData.URL} name='URL' onChange={handleChange} type="text" placeholder="ex: www.google.com/images" />
                     <br/>
@@ -160,6 +183,7 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
                     <Form.Label><strong>Add Flights</strong></Form.Label>
                     <Form.Control value={formData.flDate} onChange={e=>handleChange(e)} name="flDate" type="date" />
                     <Form.Control value={formData.flInfo} onChange={e=>handleChange(e)} name="flInfo" type="text" placeholder="ex: DEN to PHL" />
+                    <Form.Control value={formData.flPrice} onChange={e=>handleChange(e)} name="flPrice" type="number" placeholder="Price" />
                     <div>
                         <Button onClick={handleFlClick} variant="info">Add</Button> 
                         <ul>
@@ -171,6 +195,7 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
                     <Form.Label><strong>Add Hotels</strong></Form.Label>
                     <Form.Control value={formData.hoDate} onChange={e=>handleChange(e)} name="hoDate" type="date" />
                     <Form.Control value={formData.hoInfo} onChange={e=>handleChange(e)} name="hoInfo" type="text" placeholder="ex: Holiday Inn" />
+                    <Form.Control value={formData.hoPrice} onChange={e=>handleChange(e)} name="hoPrice" type="number" placeholder="Price" />
                     <div>
                         <Button onClick={handleHoClick} variant="info">Add</Button> 
                         <ul>
@@ -181,6 +206,7 @@ function AddTrip({setUpcomingTrips, upcomingTrips})
                     <Form.Label><strong>Add Activities</strong></Form.Label>
                     <Form.Control value={formData.actDay} onChange={handleChange} type="number" placeholder="Day" name='actDay'/>
                     <Form.Control value={formData.actInfo} onChange={handleChange} type="text" placeholder="ex: Nature Tour" name='actInfo' />
+                    <Form.Control value={formData.actPrice} onChange={handleChange} type="number" placeholder="Price" name='actPrice' />
                     <div>
                         <Button onClick={handleActClick} variant="info">Add</Button> 
                         <ul>

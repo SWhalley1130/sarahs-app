@@ -17,7 +17,7 @@ function GuestForm({currentTrip, handleUpdatedTrip, setAddButton})
         {
             method:'PATCH',
             headers:
-            {
+             {
                 "Content-Type":'application/json',
                 "Accepts":"application/json"
             },
@@ -36,7 +36,7 @@ function GuestForm({currentTrip, handleUpdatedTrip, setAddButton})
         <Form style={{marginLeft:'30px'}}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Add Guest</Form.Label>
-                <Form.Control value={formData} onChange={e=>setFormData(e.target.value)} type="text" placeholder="example: John Smith" />
+                <Form.Control value={formData} onChange={e=>setFormData(e.target.value)} type="text" placeholder="ex: John Smith" />
             </Form.Group>
             <Button onClick={handleSubmit} variant="info" type="submit">
                 Submit
