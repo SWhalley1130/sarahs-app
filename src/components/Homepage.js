@@ -52,7 +52,7 @@ function Homepage({upcomingTrips, handleDeletedTrip, isLoaded})
             <TopBar>
                 <Card.Title>Home</Card.Title>
                 <Button onClick={()=>nav('/add_trip')} variant="info">Add Trip</Button>
-                <Button onClick={()=>nav('/#/weather')} variant="info">Current Weather</Button>
+                <Button onClick={()=>nav('/weather')} variant="info">Current Weather</Button>
             </TopBar>
             <Container style={{marginTop:'30px'}}>
                 <Row xs={1} md={2} className="g-4">
